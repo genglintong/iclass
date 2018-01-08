@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>JavaScript同一页面两个表单互相传值</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<script language="JavaScript">
+function ok()
+{
+ document.form2.textfield2.value=document.form1.textfield.value;
+}
+function ok1()
+{
+document.form1.textfield.value=document.form2.textfield2.value;
+}
+</script>
+<body>
+<form name="form1" method="post" action="">
+ <input type="text" name="textfield">
+ <input type="button" name="Submit" value="A表单->传值给B表单" onClick="ok()">
+</form>
+<form name="form2" method="post" action="">
+ <input type="text" name="textfield2">
+ <input type="button" name="Submit" value="B表单->传值给A表单" onClick="ok1()">
+</form>
+</body>
+</html>

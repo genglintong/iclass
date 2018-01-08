@@ -1,0 +1,61 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>登录</title>  
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>  
+</head>  
+
+<body>  
+    <div id="login">  
+        <h1>i-class课程管理平台</h1>  
+
+        <input type="text" required="required" placeholder="请输入账号" name="account" id="account"></input>  
+        <input type="password" required="required" placeholder="请输入密码" name="password" id="password"></input>  
+    		
+        <select id="select" name="select">
+    		    <option value="1">教师</option>
+    		    <option value="2">学生</option>
+    		    <option value="3">管理员</option>
+    		</select>
+        
+        <button class="but" onclick="doSubmit()" style="height: 40px;">登录</button>
+
+    </div>
+
+    <script>
+      function doSubmit(){
+      var password = document.getElementById('password').value;
+      var account = document.getElementById('account').value;
+      var select = document.getElementById('select').value;
+
+      if(account == ""){
+        alert('账号不能为空'); 
+        return false;
+      }
+      if(password == ""){
+        alert('密码不能为空'); 
+        return false;
+      }
+
+      alert('select的值是：' + select);
+
+      var url;
+
+      switch (select){
+        case '1':
+          url = 'demo_teacher/index.html';      break;
+        case '2':
+          url = 'demo_student/index.html';      break;
+        case '3':
+          url = 'demo_admin/index.html';      break;
+        default:      break;
+      }
+
+      window.location= url;
+    }
+    </script>
+
+</body>  
+
+</html>

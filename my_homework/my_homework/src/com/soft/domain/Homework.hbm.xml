@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.soft.domain.Homework" table="homework">
+	<id name="homeworkId" column="homeworkId">
+		<generator class="native"></generator>
+	</id>
+	<property name="address" column="address" />
+	<property name="score" column="score" />
+	<property name="commitDate" column="commitDate" />
+	<property name="subjectId" column="subjectId" />
+	<property name="groupId" column="groupId" />
+	<!-- 配置关联关系 -->
+</class>
+
+</hibernate-mapping>

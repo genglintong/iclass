@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+         http://www.springframework.org/schema/tx
+     	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    
+    <!-- 配置连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    	<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+    	<property name="jdbcUrl" value="jdbc:mysql://111.230.233.124:3306/ssh?useUnicode=true&amp;characterEncoding=UTF-8"/>
+    	<property name="user" value="root"/>
+    	<property name="password" value="bupt123"/>
+    </bean>
+    <!-- 配置Hibernate相关属性 -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    	<!-- 注入连接池 -->
+    	<property name="dataSource" ref="dataSource"/>
+    	<!-- 配置hebernate属性 -->
+    	<property name="hibernateProperties">
+    		<props>
+    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+    			<prop key="hibernate.show_sql">true</prop>
+    			<prop key="hibernate.format_sql">true</prop>
+    			<prop key="hibernate.hbm2ddl.auto">update</prop>
+    		</props>
+    	</property>
+    	<property name="mappingLocations" value="classpath:com/soft/domain/*.hbm.xml"></property>
+    	<!-- 配置hibernate映射 -->
+    	<!-- <property name="mappingResources">
+    		<list>
+    			<value>Product.hbm.xml</value>
+    			<value>Assit.hbm.xml</value>
+    			<value>Group.hbm.xml</value>
+    			<value>Homework.hbm.xml</value>
+    			<value>Teacher.hbm.xml</value>
+    			<value>Course.hbm.xml</value>
+    			<value>Student.hbm.xml</value>
+    		</list>
+    	</property> -->
+    </bean>
+    <bean id="upload" class = "com.soft.action.upload">
+    </bean>
+	<!-- 导入xml文件 -->
+	<import resource="applicationContext-*.xml"/>
+</beans>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>学生首页</title>
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.css">
+	</head>
+
+	<body>
+		<div class="admin-main">
+			<blockquote class="layui-elem-quote">
+				<p>孙悟空&nbsp;&nbsp;同学你好，欢迎使用iclass管理平台，你可以在下方选择你的课程。</p>
+			</blockquote>
+			
+			<fieldset class="layui-elem-field" style="margin-top:1%;">
+				<legend>选择课程</legend>
+				<div class="layui-tab layui-tab-brief" style="padding-right: 3%;padding-left: 3%;">
+				<form class="layui-form layui-form-pane" action="" method="">
+					<table class="site-table table-hover">
+							<thead>
+								<tr>
+									<th style="text-align: center;">我的课程列表</th>
+									<th style="text-align: center;width:150px;">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+								      <input type="radio" name="class_code" value="1" title="机器学习">
+								      <input type="radio" name="class_code" value="2" title="组成原理">
+								      <input type="radio" name="class_code" value="3" title="编译原理">
+		    						</td>
+									<td><a class="layui-btn layui-btn-sm" type="submit" href="main.html">确认操作</a>
+									</td>
+								</tr>
+							</tbody>
+					</table>
+				</form>
+				</div>
+
+			</fieldset>
+
+			<fieldset class="layui-elem-field">
+				<legend>项目日志</legend>
+				<div class="layui-field-box">
+
+					<fieldset class="layui-elem-field layui-field-title">
+						<legend>版本号：# v1.0.0 2017-12-22</legend>
+						<div class="layui-field-box">
+							<p>1、软件工程项目组第一次内部讨论，确定需求list，定义数据字典V1.0版本。</p>
+						</div>
+					</fieldset>
+
+					<fieldset class="layui-elem-field layui-field-title">
+						<legend>版本号：# v1.0.1 2017-12-22</legend>
+						<div class="layui-field-box">
+							<p>1、软件工程项目组第2次外部讨论，明确接口定义，确定接口调用场景，定义数据字典V2.0版本。</p>
+						</div>
+					</fieldset>
+					
+				</div>
+			</fieldset>
+		</div>
+	</body>
+
+	<script type="text/javascript" charset="utf-8" src="layui.all.js"></script>
+
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/tx 
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 员工配置项：dao、service -->
+	<!-- 配置DAO层的类 -->
+	<bean id="groupDao" class = "com.soft.dao.GroupDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置业务层的类 -->
+	<bean id="groupService" class = "com.soft.service.GroupService">
+		<property name = "groupDao" ref = "groupDao"/>
+		<property name = "studentDao" ref = "studentDao"/>
+		<property name = "studentGroupDao" ref = "studentGroupDao"/>
+	</bean>
+	
+	 <!-- 配置web层的类 -->
+	<bean id="groupAction" class = "com.soft.action.GroupAction" scope ="prototype">
+		<property name = "groupService" ref = "groupService"/>
+	</bean> 	
+	
+	
+	
+	
+</beans>

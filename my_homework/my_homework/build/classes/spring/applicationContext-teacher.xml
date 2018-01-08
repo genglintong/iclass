@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/tx 
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 员工配置项：dao、service -->
+	<!-- 配置DAO层的类 -->
+	<bean id="teacherDao" class = "com.soft.dao.TeacherDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置业务层的类 -->
+	<bean id="teacherService" class = "com.soft.service.TeacherService">
+		<property name = "teacherDao" ref = "teacherDao"/>
+		<property name = "subjectDao" ref = "subjectDao"/>
+	</bean>
+	
+	 <!-- 配置web层的类 -->
+	<bean id="teacherAction" class = "com.soft.action.TeacherAction" scope ="prototype">
+		<property name = "teacherService" ref = "teacherService"/>
+		<property name = "studentService" ref = "studentService"/>
+		<property name = "courseService" ref = "courseService"/>
+	</bean> 	
+	
+	
+	
+	
+</beans>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>1号从机数据统计</title>
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/table_statistics.css" />
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+	</head>
+
+	<body>
+		<script type="text/javascript" src="plugins/layui/layui.js"></script>
+		<div class="admin-main">
+			<blockquote class="layui-elem-quote">
+				<p><b>设置统计条件</b></p>
+			</blockquote>
+
+			<fieldset class="layui-elem-field" style="padding: 10px;">
+
+				<form class="layui-form" method="get">
+
+				<div class="layui-inline">
+					<label class="layui-form-label">开始日期</label>
+					<div class="layui-input-block">
+				<input type="text" name="date_begin" id="date" lay-verify="date" placeholder="年-月-日" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+					</div>
+				</div>	
+					
+				<div class="layui-inline">
+					<label class="layui-form-label">至</label>
+					<div class="layui-input-block">
+				<input type="text" name="date_stop" id="date" lay-verify="date" placeholder="年-月-日" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+					</div>
+				</div>
+
+				<div class="layui-form-item" style="margin-top: 15px;">
+
+				<label class="layui-form-label">统计粒度</label>
+
+					<div class="layui-input-inline">
+						<select name="统计粒度">
+							<option value="day">按照天统计</option>
+							<option value="week">按照周统计</option>
+							<option value="month">按照月统计</option>
+						</select>
+					</div>
+
+				</div>
+
+				<label class="layui-form-label">选择时段</label>
+
+					<div class="layui-input-inline">
+						<select name="时段选择">
+							<option value="T1">（凌晨）00:00-05:59</option>
+							<option value="T2">（上午）06:00-11:59</option>
+							<option value="T3">（下午）12:00-17:59</option>
+							<option value="T4">（晚上）18:00-23:59</option>
+						</select>
+					</div>
+					
+<!-- <input type="submit" lay-filter="demo1" class="layui-btn" value="统计" onclick="window.open('table_statistics_result1.html');"> -->
+					
+					<input type="submit" lay-filter="demo1" class="layui-btn-small layui-btn" value="统计" id="statistic">
+
+				</div>
+				
+			</form>
+
+		</fieldset>
+
+		</div>
+		
+		<script type="text/javascript" src="js/layer.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		
+   		<script language="JavaScript"> 
+
+			$('#statistic').on('click', function(){
+				var index = layer.open({
+				  type: 2,
+				  content: 'table_statistics_result1.html',
+				  area: ['500px', '100%'],
+				  maxmin: true
+				});
+				layer.full(index);
+			});
+		</script>	
+
+		<script type="text/javascript">
+			layui.use(['form','laydate'], function() 
+			{
+				var form = layui.form(), laydate = layui.laydate;
+
+				//监听提交
+				form.on('submit(demo1)', function(data) {
+					layer.alert(JSON.stringify(data.field),{title:'最终的提交信息'})
+					return false;
+				});			
+			});
+
+		</script>
+
+	</body>
+
+</html>

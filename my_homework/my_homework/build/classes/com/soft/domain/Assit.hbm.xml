@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.soft.domain.Assit" table="assit">
+	<id name="assitId" column="assitId">
+		<generator class="native"></generator>
+	</id>
+	
+	<property name="assitName" column="assitName" length="20"/>
+	<property name="password" column="password" length="20"/>
+	<property name="courseId" column="courseId" length="20"/>
+	
+	<!-- 配置关联关系 -->
+	
+</class>
+
+
+</hibernate-mapping>

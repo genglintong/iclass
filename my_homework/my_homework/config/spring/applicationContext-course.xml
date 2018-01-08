@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/tx 
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context 
+       					   http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 员工配置项：dao、service -->
+	<!-- 配置DAO层的类 -->
+	<bean id="courseDao" class = "com.soft.dao.CourseDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置业务层的类 -->
+	<bean id="courseService" class = "com.soft.service.CourseService">
+		<property name = "courseDao" ref = "courseDao"/>
+		<property name = "studentCourseDao" ref = "studentCourseDao"/>
+		<property name = "studentDao" ref = "studentDao"/>
+		<property name = "groupDao" ref = "groupDao"/>
+		<property name = "studentGroupDao" ref = "studentGroupDao"/>
+		<property name = "courseGroupDao" ref = "courseGroupDao"/>
+	</bean>
+	
+	 <!-- 配置web层的类 -->
+	<bean id="courseAction" class = "com.soft.action.CourseAction" scope ="prototype">
+		<property name = "courseService" ref = "courseService"/>
+		<property name = "groupService" ref = "groupService"/>
+	</bean> 	
+	
+	
+	
+	
+</beans>

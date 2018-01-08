@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.soft.domain.Student" table="student">
+	<id name="studentId" column="studentId">
+		<generator class="native"></generator>
+	</id>
+	
+	<property name="studentName" column="studentName" length="50"/>
+	<property name="account" column="account" length="50"/>
+	<property name="password" column="password" length="50"/>
+	<property name="banji" column="banji" length="50"/>
+	<property name="isFirstLogin" column="isFirstLogin" />
+	<!-- 设置关联关系 -->
+</class>
+
+
+</hibernate-mapping>

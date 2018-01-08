@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name = "ssh" extends = "struts-default" namespace = "/" >
+	<interceptors>
+	<interceptor name="checkLogin" class="com.soft.action.LoginInterceptor"></interceptor>
+	<interceptor name="checkFirst" class="com.soft.action.firstInterceptor"></interceptor>
+	<interceptor-stack name="myStack">
+	<interceptor-ref name="defaultStack"></interceptor-ref>
+	<interceptor-ref name="checkFirst"></interceptor-ref>
+	<interceptor-ref name="checkLogin"></interceptor-ref>
+	
+	</interceptor-stack>
+	</interceptors>
+	<default-interceptor-ref name="myStack"></default-interceptor-ref>
+	<global-results>
+		<result name="login">/index.jsp</result>
+		<result name="changePassword" type="redirectAction">Student_showInfo.action</result>
+	</global-results>
+		<action name = "Product_*" class="productAction" method ="{1}">
+		
+		</action>
+		<action name = "Student_*" class="studentAction" method ="{1}">
+			<result name="success">/demo_student/index.jsp</result>
+			<result name="firstSuccess">/demo_student/index.jsp</result>
+			<result name="input" >/index.jsp</result>
+			
+			
+			<result name="searchScoreSuccess">/demo_student/class_info.jsp</result>
+			<result name="searchCourseSuccess">/demo_student/class_info.jsp</result>
+			<result name="findAllSubjects">/demo_student/job_view.jsp</result>
+			<result name="findConditionSubjects">/demo_student/job_view.jsp</result>
+			<result name="listCourse">/demo_student/main.jsp</result>
+			<result name="setCurrentCourse" >/demo_student/main.jsp</result>
+			<result name="tosubmit" >/demo_student/job_submit.jsp</result>
+			<result name="submitSuccess" type="redirectAction">Student_SearchAllSubject.action</result>
+			<result name="setCourse" type="redirectAction">Student_ChooseCourse.action</result>
+			<result name="changeSuccess" type="redirectAction">Student_ChooseCourse.action</result>
+			<result name="showInfo">/demo_student/account.jsp</result>
+			<result name="showGroupInfo">/demo_student/my_group.jsp</result>
+			<result name="get">Student_MyGroup.action</result>
+			<result name="error">/error1.jsp</result>
+			<result name="stuLogout">/index.jsp</result>
+		</action>
+		<action name = "Course_*" class="courseAction" method ="{1}">
+			<result name="CreateGroup" type="redirectAction">Course_refreshGroup.action?groupId=${parameterGroupId}</result>
+			<result name="CreateFailed">/error2.jsp</result>
+			<result name="get" type="redirectAction">Student_MyGroup.action</result>
+			<result name="refresh">/demo_student/create_group.jsp</result>
+		</action>
+		<action name = "upload2" class="upload" >
+		<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name = "Teacher_*" class="teacherAction" method ="{1}">
+			<result name="success">/page/demo_teacher/index.jsp</result>
+			<result name="success1">/page/demo_teacher/index.jsp</result>	
+			<result name="setCourse" type="redirectAction">teacher_getAllCourse.action</result>
+			<result name="teacherlogout">/index.jsp</result>	
+		</action>
+		
+		<action name = "teacher_*" class="com.soft.action.TeacherAction" method ="{1}">
+			
+			
+			<result name="success1">/page/demo_teacher/index.jsp</result>	
+			<result name="downLoadHKExcelSuccess">/page/demo_teacher/main.jsp</result><!--导出作业  -->
+			
+			<result name="downLoadSuccess" >/page/demo_teacher/student_list.jsp</result><!--导出成绩单  -->
+			
+			<result name="getCallScoreInfoSuccess">/page/demo_teacher/student_list_call_score.jsp</result>
+			<result name="getHKScoreInfoSuccess">/page/demo_teacher/student_list_homework_score.jsp</result>
+			
+			<result name="loginSuccess">/page/demo_teacher/index.jsp</result>
+			<result name="loginError">/index.jsp</result>
+			<result name="setSubjectSuccess" type="redirectAction">teacher_findAllSubject.action</result>
+			<result name="updateSuccess">/page/demo_teacher/account.jsp</result>
+			
+			<result name="setAssistImpl1Success" >/page/demo_teacher/index.jsp</result>
+			<result name="setAssistImpl2Success" >/page/demo_teacher/index.jsp</result>
+			<result name="setAssit1Succcess">/page/demo_teacher/assist_set1.jsp</result>
+			<result name="setAssit2Succcess">/page/demo_teacher/assist_set2.jsp</result>
+			
+			<result name="getAllCourseSuccess">/page/demo_teacher/main.jsp</result>
+			
+			<result name="setCallNumberSuccess" type="redirect">/teacher_findAllStudent.action</result> <!-- 设置完第几次点名属性 -->
+			
+			<!-- <result name="changeSuccess" type="redirectAction">Student_showInfo.action</result> -->
+			
+			<result name="chooseCourseSuccess" type="redirect">/page/demo_teacher/main.jsp</result>
+			
+			<result name="callSuccess" type="redirect">/teacher_findAllStudent.action</result> <!-- 设置完第几次点名属性 -->
+			<!-- <result name="setHomeworkScoreSuccess" type="redirectAction" >/teacher_findHomework.action</result> -->
+			<result name="setHomeworkScoreSuccess"  >/page/demo_teacher/job_check.jsp</result>
+			<result name="setCallParmaterSuccess">/page/demo_teacher/call_set.jsp</result> <!--设置课程点名配置  -->
+			
+			<result name="findAllStuSuccess">/page/demo_teacher/students_call.jsp</result>
+			<result name="findHkSuccess" >/page/demo_teacher/job_check.jsp</result> <!--查询作业名单  -->
+			<result name="findStuSuccess">/page/demo_teacher/student_list.jsp</result> <!--查询学生名单  -->
+			<result name="findGroupSucccess">/page/demo_teacher/assist_set1.jsp</result> <!--查询小组名单  -->
+			<result name="findSubjectSuccess">/page/demo_teacher/job_history.jsp</result> <!--查询学生名单  -->
+			
+		</action>
+		
+		<action name = "course_*" class="com.soft.action.CourseAction" method ="{1}">
+			<result name="set_jobSuccess">/success.jsp</result>
+			<result name="selectSuccess">/success.jsp</result>
+			<result name="set_jobError">/page/login.jsp</result>
+			<result name="createSuccess" type="redirectAction">teacher_getAllCourse.action</result>
+		</action>
+		
+		
+		
+		
+		
+	</package>
+</struts>

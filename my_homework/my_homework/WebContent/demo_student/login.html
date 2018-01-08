@@ -1,0 +1,50 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>登录</title>  
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>  
+</head>  
+
+<body>  
+    <div id="login">  
+        <h1>i-class课程管理平台</h1>  
+
+        <form id="formid" method='post' action='index.html'>  
+            <input type="text" required="required" placeholder="请输入账号" name="userid" id="userid"></input>  
+            <input type="password" required="required" placeholder="请输入密码" name="userpassid" id="userpassid"></input>  
+			<select>
+		        <option value="0" selected="">教师</option>
+		        <option value="1">学生</option>
+		        <option value="2">管理员</option>
+			</select>
+            <button type="submit" class="but" onclick="checkUser();">登录</button>
+        </form> 
+    </div> 
+
+
+<script type="text/javascript">
+    function checkUser(){
+     var result = document.getElementById("userid").value;
+      var password = document.getElementById("userpassid").value;
+
+       if(result == ""  ){
+         alert("用户名不能为空！");
+         return false;
+       }
+       if(password == ""  ){
+        alert("密码不能为空！");
+         return false;
+       }
+       else{
+       return true;
+       }
+    
+    document.getElementById("formid").submit()
+	}
+</script>
+
+
+</body>  
+
+</html>

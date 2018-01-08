@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创建小组</title>
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.css">
+	</head>
+
+	<body>
+	<div class="admin-main" style="">	
+	<blockquote class="layui-elem-quote">
+		<p>你好同学，你可以在这里创建你的学习小组，大家一起学习，效率才会更高</p>
+	</blockquote>
+	<fieldset class="layui-elem-field" style="margin-top:1%;">
+		<legend style="text-align: center;">创建学习小组</legend>
+      	<form class="layui-form layui-form-pane" action="" style="padding: 2%">
+		  
+		<div class="layui-form-item">
+		    <label class="layui-form-label">小组编号</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="username" placeholder="获取小组编号" disabled="1" class="layui-input">
+		    </div>
+		</div>
+		
+		<div class="layui-form-item" style="">
+		      <label class="layui-form-label">小组人数</label>
+		      <div class="layui-input-inline">
+		        <input type="number" name="count_member" placeholder="获取小组人数" disabled="1" class="layui-input">
+		      </div>
+		</div>
+
+		<div class="layui-form-item" pane="" style="width:90%;float:left;">
+		    <label class="layui-form-label">选择组员</label>
+		    <div class="layui-input-block">
+		        <input type="checkbox" name="" lay-skin="primary" title="孙悟空">
+		        <input type="checkbox" name="" lay-skin="primary" title="铁扇公主">
+		        <input type="checkbox" name="" lay-skin="primary" title="铁扇公主">
+		        <input type="checkbox" name="" lay-skin="primary" title="孙悟空">
+		    </div>
+		</div>
+
+		<div style="float: left;margin-left:1%;">
+			<button class="layui-btn layui-btn-primary" type="submit" id="con_selected" name="con_selected">确认添加</button>
+		</div>
+		
+	    <div class="layui-form-item" style="width:90%;float: left;">
+		    <div class="layui-input-block">
+		    <input type="text" name="member_selected" placeholder="此处显示已添加的成员" class="layui-input" value="">
+		    </div>
+		</div>
+
+		<div style="float: left;margin-left:1%;">
+			<button class="layui-btn layui-btn-primary" type="submit" id="del_selected" name="del_selected">删除</button>
+		</div>
+		
+		<div class="layui-form-item">
+	        <label class="layui-form-label">联系手机</label>
+	        <div class="layui-input-inline">
+	        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+	        </div>
+	    </div>
+
+		<div class="layui-form-item layui-form-text">
+		    <label class="layui-form-label">小组描述（可选）</label>
+		    <div class="layui-input-block">
+		    <textarea placeholder="输入一个个性化的小组描述" class="layui-textarea" name="group_discription"></textarea>
+		    </div>
+		</div>
+		
+		<div class="layui-form-item" style="text-align:center;">
+		    <button class="layui-btn" lay-submit="" lay-filter="demo1">立即创建</button>
+      		<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		</div>		
+		</form> 
+	</fieldset>
+
+	<script src="layui.all.js" charset="utf-8"></script>
+	<script>
+	layui.use(['form'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  
+	  //监听提交
+	  form.on('submit(demo1)', function(data){
+	    layer.alert(JSON.stringify(data.field), {
+	      title: '最终的提交信息'
+	    })
+	    return false;
+	  });
+
+	});
+	</script>
+
+</body>
+
+</html>

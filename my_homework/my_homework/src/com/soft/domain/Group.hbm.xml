@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.soft.domain.Group" table="group1">
+	<id name="groupId" column="groupId">
+		<generator class="native"></generator>
+	</id>
+	
+	<property name="leaderId" column="leaderId"/>
+	<property name="personNum" column="personNum" />
+	<property name="groupName" column="groupName" />
+	<property name="phoneNum" column="phoneNum" />
+	<property name="assitId" column="assitId" />
+	<property name="courseId" column="courseId" />
+	<!-- 设置关联关系 -->
+</class>
+
+</hibernate-mapping>

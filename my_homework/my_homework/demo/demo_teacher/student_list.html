@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>学生名单</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/layui.css" media="all" />
+
+	</head>
+
+	<body>
+		<div class="admin-main">
+			<blockquote class="layui-elem-quote">
+				<p><b>老师您好，您可以在这里查看学生名单</b></p>
+			</blockquote>
+
+			<fieldset class="layui-elem-field" style="padding:1%;">
+			<legend style="text-align:center;">查找条件</legend>
+
+			<form class="layui-form layui-form-pane" action="" method="post">
+				<div class="layui-form-item" style="width:292px;float:left;" >
+					    <label class="layui-form-label">学生班级</label>
+					    <div class="layui-input-block">
+					    <input type="text" name="student_class" placeholder="请输入学生班级" autocomplete="off" class="layui-input">
+					    </div>
+				</div>
+
+				<div class="layui-form-item" style="width:292px;float:left;" >
+					    <label class="layui-form-label">学生学号</label>
+					    <div class="layui-input-block">
+					    <input type="text" name="student_code" placeholder="请输入学生学号" autocomplete="off" class="layui-input">
+					    </div>
+				</div>
+			    <div class="layui-form-item" style="width:292px;float: left;">
+					    <label class="layui-form-label">学生姓名</label>
+					    <div class="layui-input-block">
+					    <input type="number" name="student_name" placeholder="请输入学生姓名" autocomplete="off" class="layui-input">
+					    </div>
+				</div>
+
+				<div style="width:40%;float:left;">
+					<div class="" style="margin-left:5%;line-height:37px;">
+				      <button class="layui-btn" lay-submit="" lay-filter="demo1"><i class="layui-icon">&#xe615;</i>查找</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				</div>
+
+			</form>
+			</fieldset>
+					
+			<fieldset class="layui-elem-field">
+				<legend style="text-align:center;">学生名单</legend>
+				<div class="layui-field-box">
+					<table class="site-table table-hover">
+						<thead>
+							<tr>
+								<th style="text-align: center;">班级</th>
+								<th style="text-align: center;">姓名</th>
+								<th style="text-align: center;">学号</th>
+								<th style="text-align: center;">作业总成绩(点击查看详细)</th>
+								<th style="text-align: center;">签到总成绩(点击查看详细)</th>
+								<th style="text-align: center;">综合成绩</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2014211302</td>
+								<td>孙悟空</td>
+								<td>2014211171</td>
+								<td style="font-weight: bold;"><a href="student_list_homework_score.html">234</a></td>
+								<td style="font-weight: bold;"><a href="student_list_call_score.html">35</a></td>
+								<td>80</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+				      <button class="layui-btn">导出excel</button>
+				    </div>
+				</div>
+			</fieldset>	
+		</div>
+
+	<script type="text/javascript" src="layui.all.js"></script>
+	<script>
+	layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+	  
+	  //日期
+	  laydate.render({
+	    elem: '#date'
+	  });
+	  laydate.render({
+	    elem: '#date1'
+	  });
+	  
+	  //创建一个编辑器
+	  var editIndex = layedit.build('LAY_demo_editor');
+	 
+	  //自定义验证规则
+	  form.verify({
+	    title: function(value){
+	      if(value.length < 5){
+	        return '标题至少得5个字符啊';
+	      }
+	    }
+	    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+	    ,content: function(value){
+	      layedit.sync(editIndex);
+	    }
+	  });
+	  
+	  //监听指定开关
+	  form.on('switch(switchTest)', function(data){
+	    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+	      offset: '6px'
+	    });
+	    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+	  });
+	  
+	  //监听提交
+	  form.on('submit(demo1)', function(data){
+	    layer.alert(JSON.stringify(data.field), {
+	      title: '最终的提交信息'
+	    })
+	    return false;
+	  });
+		});
+	</script>
+
+	</body>
+
+</html>

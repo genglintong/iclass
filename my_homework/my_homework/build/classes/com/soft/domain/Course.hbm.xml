@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.soft.domain.Course" table="course">
+	<id name="courseId" column="courseId">
+		<generator class="native"></generator>
+	</id>
+	
+	<property name="groupMaxNum" column="groupMaxNum" />
+	<property name="courseDesc" column="courseDesc" />
+	<property name="groupMinNum" column="groupMinNum" />
+	<property name="groupPre" column="groupPre" />
+	<property name="courseName" column="courseName" />
+	<property name="createdate" column="createdate" />
+	<property name="teacherId" column="teacherId" />
+	<property name="allCallNumber" column="allCallNumber" />
+	<property name="onCallScore" column="onCallScore" />
+	<property name="shoukeshichang" column="shoukeshichang" />
+	<property name="kaohefangshi" column="kaohefangshi" />
+	<!-- 设置关联关系 -->
+</class>
+
+</hibernate-mapping>
