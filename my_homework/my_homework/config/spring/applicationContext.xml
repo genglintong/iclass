@@ -16,9 +16,9 @@
     <!-- 配置连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
     	<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-    	<property name="jdbcUrl" value="jdbc:mysql://111.230.233.124:3306/ssh?useUnicode=true&amp;characterEncoding=UTF-8"/>
-    	<property name="user" value="root"/>
-    	<property name="password" value="bupt123"/>
+    	<property name="jdbcUrl" value="jdbc:mysql://ip:3306/ssh?useUnicode=true&amp;characterEncoding=UTF-8"/>
+    	<property name="user" value="***"/>
+    	<property name="password" value="****"/>
     </bean>
     <!-- 配置Hibernate相关属性 -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
